@@ -1,5 +1,5 @@
 create table customer(
-  customer_id serial primary key,
+  id serial primary key,
   name varchar(40) not null,
   lastname varchar(40),
   phone varchar(20),
@@ -9,9 +9,8 @@ create table customer(
   registration_date date default now()
 );
 create table address(
-  address_id serial primary key,
-  customer_id int,
-  foreign key (customer_id) references customer (customer_id),
+  id serial primary key,
+  customer_id int references public.customer(id) ON DELETE CASCADE ON UPDATE CASCADE,
   zipcode numeric,
   country varchar(60) not null,
   county varchar(60),

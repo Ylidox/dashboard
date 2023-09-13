@@ -1,7 +1,7 @@
 let express = require('express');
 let app = express();
 
-let {sequelize, Customer, Address} = require('./db/sequelize');
+let {sequelize} = require('./db/sequelize');
 
 let customerRouter = require('./routers/customerRouter');
 
@@ -15,16 +15,6 @@ const connection = async () => {
 }
 
 connection();
-
-let insert = () => {
-  Address.create({
-    customer_id: 10,
-    country: 'USA',
-  });
-}
-
-// insert();
-
 
 const PORT = 3001;
 
