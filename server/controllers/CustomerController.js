@@ -14,7 +14,7 @@ class CustomerController{
       res.json(result);
     }catch(e){
       console.log(e.message);
-      res.status(404).json({message: 'Невозможно отправить записи'});
+      res.status(404).json({message: e.message});
     }
   }
   async getCustomerById(req, res){
@@ -46,11 +46,11 @@ class CustomerController{
   }
   async changeCustomer(req, res){
     try{
-      let new_customer = req.body;
+      let customer = req.body;
       await Customer.update(
-        new_customer, 
+        customer, 
         {where: {
-          id: new_customer.id
+          id: customer.id
         }}
       );
       res.status(200).json({message: 'Пользователь обновлен'});
