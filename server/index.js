@@ -4,6 +4,7 @@ let app = express();
 let {sequelize} = require('./db/sequelize');
 
 let customerRouter = require('./routers/customerRouter');
+let addressRouter = require('./routers/addressRouter');
 
 const connection = async () => {
   try {
@@ -20,5 +21,6 @@ const PORT = 3001;
 
 app.use(express.json());
 app.use('/customer', customerRouter);
+app.use('/address', addressRouter);
 
 app.listen(PORT, () => console.log(`Server starting on port ${PORT}`));

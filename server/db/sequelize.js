@@ -13,7 +13,7 @@ Customer.hasMany(Address, {
   onDelete: 'CASCADE',
 });
 Address.belongsTo(Customer, {
-  // foreignKey: 'customer_id',
+  foreignKey: 'customer_id',
 });
 
 

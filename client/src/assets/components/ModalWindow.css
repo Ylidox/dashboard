@@ -1,0 +1,44 @@
+.buttons-footer{
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.button-add{
+  margin: 0 5px !important;
+}
+
+.input{
+  margin: 3px !important;
+  border: 1px solid white !important;
+  font-size: 14px !important;
+}
+.input:focus{
+  border: 1px solid rgb(255, 66, 145) !important;
+}
+
+.modal-back{
+  background: #292b41 !important;
+}
+
+.modal-header>h3{
+  color: white !important;
+}
+
+.alert-danger-update{
+  /* height: 100% !important; */
+  margin-bottom: 0 !important;
+}
+
+.modal-alert-danger-h4>h4{
+  width: 100% !important;
+}
+
+.label-delete{
+  color: white;
+  font-size: 15px;
+}
+
+.modal-body-delete{
+  padding-top: 5px !important;
+}

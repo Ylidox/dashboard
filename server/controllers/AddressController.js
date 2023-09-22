@@ -14,10 +14,23 @@ class AddressController{
       res.status(404).json(e.message);
     }
   }
+  async getAllAddresses(req, res){
+    try{
+      let result = await sequelize.query(`select * from address`, {
+        raw: false,
+        type: QueryTypes.SELECT,
+      });
+      res.json(result);
+    }catch(e){
+      console.log(e.message);
+      res.status(404).json(e.message);
+    }
+  }
   async addAddress(req, res){
     try{
-      let new_addres = req.body;
-      await Customer.create(customer);
+      let new_address = req.body;
+      console.log(req.body)
+      await Address.create(new_address);
       res.json({message: 'Адрес добавлен'});
     }catch(e){
       console.log(e.message);
@@ -36,7 +49,7 @@ class AddressController{
       res.status(200).json({message: 'Адрес обновлен'});
     }catch(e){
       console.log(e.message);
-      res.status(404).json({message:'Адрес не обновлен'});
+      res.status(404).json({message: e.message});
     }
   }
   async deleteAddress(req, res){
@@ -46,7 +59,7 @@ class AddressController{
       res.status(200).json({message: 'Адрес удален'})
     }catch(e){
       console.log(e);
-      res.status(404).json({message:'Адрес не удален'});
+      res.status(404).json({message:e.message});
     }
   }
 }

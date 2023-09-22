@@ -1,0 +1,34 @@
+.table{
+  width: 100%;
+  height: 40vh;
+
+}
+
+.table-header{
+  color: white;
+  background: #181924;
+  font-size: 15px;
+}
+
+.selected-header{
+  background: gray;
+}
+
+.row-selected{
+  background: #3c3f5c;
+}
+
+.table-row:nth-child(odd){
+  color: white;
+  background: #27293d;
+}
+
+.table-row:nth-child(even){
+  color: white;
+  background: #1e1e2f;
+}
+
+.buttongroup{
+  width: 100%;
+  max-width: 600px;
+}

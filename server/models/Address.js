@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 
 module.exports = function(sequelize, Customer){
   return sequelize.define('address', {
-    address_id: {
+    id: {
       type: Sequelize.INTEGER,
       autoIncrement: true,
       primaryKey: true,
@@ -13,7 +13,7 @@ module.exports = function(sequelize, Customer){
       allowNull: false,
       references: {
         model: Customer,
-        key: 'customer_id'
+        key: 'id'
       }
     },
     zipcode: {

@@ -11,7 +11,16 @@ class CustomerController{
         type: QueryTypes.SELECT,
       });
       if(result.length == 0) throw new Error('Массив result пуст');
-      res.json(result);
+      
+      const count = await sequelize.query('select count(id) from customer', {
+        raw: false,
+        type: QueryTypes.SELECT
+      });
+
+      res.json({
+        count: count[0].count,
+        rows: result,
+      });
     }catch(e){
       console.log(e.message);
       res.status(404).json({message: e.message});
@@ -32,6 +41,35 @@ class CustomerController{
     }catch(e){
       console.log(e.message);
       res.status(404).json({message:'Пользователь не найден'});
+    }
+  }
+  async getCustomersOnExpenses(req, res){
+    try{
+      let customers = await Customer.findAll({
+        order: [['expenses', 'DESC']],
+        limit: 10,
+      });
+      res.status(200).json(customers);
+    }catch(e){
+      console.log(e.message);
+      res.status(404).json(e.message);
+    }
+  }
+  async getCustomersByAddressesCount(req, res){
+    try{
+      let ans = await sequelize.query(`
+        select customer.id, customer.lastname, customer.name, count(address.id) AS count
+        from customer
+        left join address ON customer.id = address.customer_id
+        group by customer.id
+        order by count desc
+        limit 10;
+      `);
+      // let ans = await res.json();
+      res.status(200).json(ans[0]);
+    }catch(e){
+      console.log(e.message);
+      res.status(404).json(e.message);
     }
   }
   async addCustomer(req, res){

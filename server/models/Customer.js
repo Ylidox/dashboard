@@ -24,9 +24,6 @@ module.exports = function(sequelize){
     expenses: {
       type: Sequelize.FLOAT,
     },
-    blocked: {
-      type: Sequelize.BOOLEAN,
-    },
     registration_date: {
       type: Sequelize.DATE,
     },
